@@ -1,8 +1,8 @@
 public class Main {
 	public static void main (String[] args) {
+		Comunicacao mia = new Comunicacao();
 
-		String s = MIA.listen();
-		MIA.speak(s);
-	
+		Agenda a = new Agenda();
+		a.AdicionarCompromisso();
 	}
 }
