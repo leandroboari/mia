@@ -1,18 +1,19 @@
-class DataHora {
+class Compromisso {
+	String texto;
 	int dia;
 	int mes;
 	int ano;
 	int hora;
 	int minuto;
 
-	void DataHora() {
+	void Compromisso() {
+		texto = "";
 		dia = 0;
 		mes = 0;
 		ano = 0;
 		hora = 0;
 		minuto = 0;
 	}
-
 	void DefineDia(String palavra) {
 		dia = Integer.parseInt(palavra);
 	}
@@ -33,40 +34,48 @@ class DataHora {
 	void DefineAno(String palavra) {
 		ano = Integer.parseInt(palavra);
 	}
-
-	void DefineHora(String palavra) {
-		hora = Integer.parseInt(palavra);
-	}
-
 	void DefineMinuto(String palavra) {
 		if(palavra.equals("meia")) minuto = 30;
 		else minuto = Integer.parseInt(palavra);
 	}
-
+	void DefineHora(String palavra) {
+		hora = Integer.parseInt(palavra);
+	}
 	boolean VerificaIgnorar(String palavra) {
 		if(palavra.equals("de")
 			|| palavra.equals("do")
 			|| palavra.equals("hora")
 			|| palavra.equals("horas")
+			|| palavra.equals(":")
 			|| palavra.equals("e")) {
 			return true;
 		}
 		return false;
 	}
-
-
-	String GetData() {
-		return dia + "/" + mes + "/" + ano;
+	void DefineTexto(String compromisso) {
+		texto = compromisso;
+	}
+	String VerAno() {
+		return String.valueOf(ano);
+	}
+	String VerMes() {
+		return String.valueOf(mes);
+	}
+	String VerDia() {
+		return String.valueOf(dia);
+	}
+	String VerHora() {
+		return String.valueOf(hora);
+	}
+	String VerMinuto() {
+		return String.valueOf(minuto);
+	}
+	String VerTexto() {
+		return texto;
 	}
 
-
-	String GetHora() {
-		return hora + ":" + minuto;
+	String VerCompromisso() {
+		return "Em " + VerDia() + "/" + VerMes() + "/" + VerAno() + " as " + VerHora() + ":" + VerMinuto() + " voce me falou... " + VerTexto();
 	}
-
-	String GetDataHora() {
-		return GetData() + " " + GetHora();
-	}
-
 
 }

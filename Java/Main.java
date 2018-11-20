@@ -1,8 +1,17 @@
 public class Main {
 	public static void main (String[] args) {
-		Comunicacao mia = new Comunicacao();
-
-		Agenda a = new Agenda();
-		a.AdicionarCompromisso();
+		Agenda agenda = new Agenda();
+		Piadas piadas = new Piadas();
+		Notas notas = new Notas();
+		
+		while(true) {
+			switch(Comunicacao.Escuta()) {
+				case "Adicionar compromisso": agenda.AdicionarCompromisso(); break;
+				case "Ver compromissos": agenda.LerCompromissos(); break;
+				case "Adiconar nota": notas.AdicionarNota(); break;
+				case "Busca nota": notas.BuscaNota(); break;
+				default: Comunicacao.Fala("Nao entendi. Pode repetir?"); break;
+			}
+		}
 	}
 }
