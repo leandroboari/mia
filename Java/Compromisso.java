@@ -47,6 +47,8 @@ class Compromisso {
 			|| palavra.equals("hora")
 			|| palavra.equals("horas")
 			|| palavra.equals(":")
+			|| palavra.equals("as")
+			|| palavra.equals("às")
 			|| palavra.equals("e")) {
 			return true;
 		}
@@ -75,7 +77,7 @@ class Compromisso {
 	}
 
 	String VerCompromisso() {
-		return "Em " + VerDia() + "/" + VerMes() + "/" + VerAno() + " as " + VerHora() + ":" + VerMinuto() + " voce me falou... " + VerTexto();
+		return "Em " + VerDia() + "/" + VerMes() + "/" + VerAno() + " as " + VerHora() + ":" + VerMinuto() + " voce tera: " + VerTexto();
 	}
 
 }

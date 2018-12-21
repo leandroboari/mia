@@ -4,7 +4,7 @@ public class Main {
 		Piadas piadas = new Piadas();
 		Notas notas = new Notas();
 		
-		Comunicacao.Fala("Oi! Sou MIA como posso ajudar?");
+		Comunicacao.Fala("Oi! Eu sou a MIA. Como posso ajudar?");
 
 		while(true) {
 			switch(Comunicacao.Escuta()) {

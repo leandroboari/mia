@@ -63,19 +63,18 @@ public class Agenda {
 		String horario = Comunicacao.Escuta();
 		String[] listaPalavrasHora = horario.trim().split("\\s+");
 		palavraAtual = 0;
-		novoCompromisso.DefineHora(listaPalavrasHora[palavraAtual]);
-		palavraAtual++;
-		if(novoCompromisso.VerificaIgnorar(listaPalavrasHora[palavraAtual])) {
-			palavraAtual++;
-        }
-		if(palavraAtual < listaPalavrasHora.length) {
-			if(novoCompromisso.VerificaIgnorar(listaPalavrasHora[palavraAtual])) {
-				palavraAtual++;
-			}
 
-			if(palavraAtual < listaPalavrasHora.length) {
-				novoCompromisso.DefineMinuto(listaPalavrasHora[palavraAtual]);
-			}
+		while(novoCompromisso.VerificaIgnorar(listaPalavrasHora[palavraAtual])) {
+			palavraAtual++;
+		}
+
+		novoCompromisso.DefineHora(listaPalavrasHora[palavraAtual]);
+
+		if(palavraAtual > 1){
+			while(novoCompromisso.VerificaIgnorar(listaPalavrasHora[palavraAtual])) {
+				palavraAtual++;
+			}			
+			novoCompromisso.DefineMinuto(listaPalavrasHora[palavraAtual]);
 		}
 
 		Comunicacao.Fala("E qual é o compromisso?");
@@ -95,4 +94,3 @@ public class Agenda {
 		}
 	}
 }
-
