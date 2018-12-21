@@ -7,25 +7,25 @@ public class Interpretador {
 	public static Vector<String> contaPiada = new Vector<String>();
 
 	public Interpretador() {
-		adCompromisso.add("Colocar compromiso");
+		adCompromisso.add("Colocar compromissos");
 		adCompromisso.add("Inserir compromisso");
-		adCompromisso.add("Adicionar compromiso");
-		adCompromisso.add("Marcar compromiso");
-		adCompromisso.add("Colocar compromiso");
-		adCompromisso.add("Fazer compromiso");
-		adCompromisso.add("Novo compromiso");
-		adCompromisso.add("Colocar um compromiso");
+		adCompromisso.add("Adicionar compromissos");
+		adCompromisso.add("Marcar compromissos");
+		adCompromisso.add("Colocar compromissos");
+		adCompromisso.add("Fazer compromissos");
+		adCompromisso.add("Novo compromissos");
+		adCompromisso.add("Colocar um compromisso");
 		adCompromisso.add("Inserir um compromisso");
-		adCompromisso.add("Adicionar um compromiso");
-		adCompromisso.add("Marcar um compromiso");
-		adCompromisso.add("Colocar um compromiso");
-		adCompromisso.add("Fazer um compromiso");
-		adCompromisso.add("Colocar um novo compromiso");
+		adCompromisso.add("Adicionar um compromisso");
+		adCompromisso.add("Marcar um compromisso");
+		adCompromisso.add("Colocar um compromisso");
+		adCompromisso.add("Fazer um compromisso");
+		adCompromisso.add("Colocar um novo compromisso");
 		adCompromisso.add("Inserir um novo compromisso");
-		adCompromisso.add("Adicionar um novo compromiso");
-		adCompromisso.add("Marcar um novo compromiso");
-		adCompromisso.add("Colocar um novo compromiso");
-		adCompromisso.add("Fazer um novo compromiso");
+		adCompromisso.add("Adicionar um novo compromisso");
+		adCompromisso.add("Marcar um novo compromisso");
+		adCompromisso.add("Colocar um novo compromisso");
+		adCompromisso.add("Fazer um novo compromisso");
 		
 		adNota.add("Colocar nota");
 		adNota.add("Inserir nota");
