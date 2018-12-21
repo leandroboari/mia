@@ -1,5 +1,6 @@
 import java.util.Vector;
 import java.util.Calendar;
+import java.util.Date;
 
 public class Agenda {
 	private Vector<Compromisso> compromissos = new Vector<Compromisso>();
@@ -8,28 +9,44 @@ public class Agenda {
 		Compromisso novoCompromisso = new Compromisso();
 		Comunicacao.Fala("Qual o dia, mes e ano do seu compromisso?");
 		String data = Comunicacao.Escuta();
-
-		// Calendar calendario = Calendar.getInstance();
-		// Date hoje = calendario.getTime();
-		// int dia = calendar.get(Calendar.DAY_OF_MONTH);
-		// int mes = calendar.get(Calendar.MONTH);
-		// int ano = calendar.get(Calendar.YEAR);
+		int palavraAtual = 0;
 
 		if(data.equals("hoje")) {
-			novoCompromisso.DefineDia(dia);
-			novoCompromisso.DefineMes(mes);
-			novoCompromisso.DefineAno(ano);
-		} else if(data.equals("amanhã")) {
-			novoCompromisso.DefineDia();
-			novoCompromisso.DefineMes();
-			novoCompromisso.DefineAno();
-		} else if(data.equals("depois de amanhã")) {
-			novoCompromisso.DefineDia();
-			novoCompromisso.DefineMes();
-			novoCompromisso.DefineAno();
+			Date d = new Date();
+			Calendar calendario = Calendar.getInstance();
+			calendario.setTime(d);
+			int ano = calendario.get(Calendar.YEAR);
+			int mes = calendario.get(Calendar.MONTH);
+			int dia = calendario.get(Calendar.DAY_OF_MONTH);
+			novoCompromisso.DefineDia(String.valueOf(dia));
+			novoCompromisso.DefineMes(String.valueOf(mes + 1));
+			novoCompromisso.DefineAno(String.valueOf(ano));
+		} else if(data.equals("amanha")) {
+			Date d = new Date();
+			Calendar calendario = Calendar.getInstance(); 
+			calendario.add(Calendar.DATE, 1);
+			d = calendario.getTime();
+			calendario.setTime(d);
+			int ano = calendario.get(Calendar.YEAR);
+			int mes = calendario.get(Calendar.MONTH);
+			int dia = calendario.get(Calendar.DAY_OF_MONTH);
+			novoCompromisso.DefineDia(String.valueOf(dia));
+			novoCompromisso.DefineMes(String.valueOf(mes + 1));
+			novoCompromisso.DefineAno(String.valueOf(ano));
+		} else if(data.equals("depois de amanha")) {
+			Date d = new Date();
+			Calendar calendario = Calendar.getInstance(); 
+			calendario.add(Calendar.DATE, 2);
+			d = calendario.getTime();
+			calendario.setTime(d);
+			int ano = calendario.get(Calendar.YEAR);
+			int mes = calendario.get(Calendar.MONTH);
+			int dia = calendario.get(Calendar.DAY_OF_MONTH);
+			novoCompromisso.DefineDia(String.valueOf(dia));
+			novoCompromisso.DefineMes(String.valueOf(mes + 1));
+			novoCompromisso.DefineAno(String.valueOf(ano));
 		} else {
 			String[] listaPalavrasData = data.trim().split("\\s+");
-			int palavraAtual = 0;
 			novoCompromisso.DefineDia(listaPalavrasData[palavraAtual]);
 			palavraAtual++;
 			if(novoCompromisso.VerificaIgnorar(listaPalavrasData[palavraAtual])) {

@@ -4,6 +4,8 @@ public class Main {
 		Piadas piadas = new Piadas();
 		Notas notas = new Notas();
 		
+		Comunicacao.Fala("Oi! Sou MIA como posso ajudar?");
+
 		while(true) {
 			switch(Comunicacao.Escuta()) {
 				case "Adicionar compromisso": agenda.AdicionarCompromisso(); break;

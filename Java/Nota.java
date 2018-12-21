@@ -1,4 +1,4 @@
-public class Nota {
+public class Nota { 
 	private String identificacao;
 	private String nota;
 
