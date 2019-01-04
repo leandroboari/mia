@@ -1,8 +1,9 @@
-public class Main {
+	public class Main {
 	public static void main (String[] args) {
 		Agenda agenda = new Agenda();
 		Piadas piadas = new Piadas();
 		Notas notas = new Notas();
+		Interpretador interpretador = new Interpretador();
 		
 		Comunicacao.Fala("Oi! Eu sou a MIA. Como posso ajudar?");
 
