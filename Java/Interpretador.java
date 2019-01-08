@@ -51,13 +51,13 @@
 		}
 		return novaPalavra;
 	}
-	
+
 
 	public static String Processar(String frase) {
 		String[] listaPalavras = ListaPalavras(frase);
 		int contaPalavras = listaPalavras.lenght;
 
-		if(ListaPalavras.contains())
+		//if(ListaPalavras.contains())
 
 	}
 	
