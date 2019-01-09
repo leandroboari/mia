@@ -1,11 +1,12 @@
-	public class Interpretador {
+import java.util.*;
 
-	public static Vector<String> adicionar = new Vector<String>();
-	public static Vector<String> buscar = new Vector<String>();
-	public static Vector<String> listar = new Vector<String>();
-	public static Vector<String> remover = new Vector<String>();
-	public static Vector<String> editar = new Vector<String>();
-
+public class Interpretador {
+	private final Vector<String> adicionar = new Vector<String>();
+	private final Vector<String> buscar = new Vector<String>();
+	private final Vector<String> listar = new Vector<String>();
+	private final Vector<String> remover = new Vector<String>();
+	private final Vector<String> editar = new Vector<String>();
+	private final Vector<String> aleatorizar = new Vector<String>();
 
 	public Interpretador() {	
 		adicionar.add("adicionar");
@@ -35,17 +36,24 @@
 		remover.add("excluir");
 		remover.add("esquecer");
 
+		aleatorizar.add("contar");
+		aleatorizar.add("fala");
+		aleatorizar.add("dê");
+		aleatorizar.add("fale");
+		aleatorizar.add("conte");
+		aleatorizar.add("conta");
+
 	}
 
 	private String ConverteSingular(String palavra) {
 		String novaPalavra = "";
-		int tamanho = palavra.length;
+		int tamanho = palavra.length();
 		for(int i = 0; i < tamanho; i++) {
 			if(i != tamanho - 1) {
-				novaPalavra = novaPalavra + palavra[i];
+				novaPalavra = novaPalavra + palavra.charAt(i);
 			} else {
-				if(palavra[i] != "s") {
-					novaPalavra = novaPalavra + palavra[i];
+				if(String.valueOf(palavra.charAt(i)).equals("s")) {
+					novaPalavra = novaPalavra + palavra.charAt(i);
 				}
 			}	
 		}
@@ -53,11 +61,29 @@
 	}
 
 
-	public static String Processar(String frase) {
+	public String Processar(String frase) {
 		String[] listaPalavras = ListaPalavras(frase);
-		int contaPalavras = listaPalavras.lenght;
+		int contaPalavras = listaPalavras.length;
 
-		//if(ListaPalavras.contains())
+		String verbo = "";
+		for(int i = 0; i < contaPalavras; i++) {
+			listaPalavras[i] = ConverteSingular(listaPalavras[i].toLowerCase());
+			if(adicionar.contains(listaPalavras[i])) verbo = "adicionar";
+			if(buscar.contains(listaPalavras[i])) verbo = "buscar";
+			if(listar.contains(listaPalavras[i])) verbo = "listar";
+			if(editar.contains(listaPalavras[i])) verbo = "editar";
+			if(remover.contains(listaPalavras[i])) verbo = "remover";
+			if(aleatorizar.contains(listaPalavras[i])) verbo = "aleatorizar";
+		}
+
+		String funcao = "";
+		for(int i = 0; i < contaPalavras; i++) {
+			if(listaPalavras[i].equals("compromisso")) funcao = "compromisso";
+			if(listaPalavras[i].equals("piada")) funcao = "piada";
+			if(listaPalavras[i].equals("nota")) funcao = "nota";
+		}
+
+		return verbo + " " + funcao;
 
 	}
 	
