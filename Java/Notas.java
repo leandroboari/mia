@@ -9,6 +9,7 @@ public class Notas {
 		Comunicacao.Fala("Agora, o texto da nota...");
 		String nota = Comunicacao.Escuta();
 		notas.add(new Nota(identificacao, nota));
+		Comunicacao.Fala("Pronto!");
 	}
 
 	public int PegaTamanho() {

@@ -3,6 +3,7 @@
 		Agenda agenda = new Agenda();
 		Notas notas = new Notas();
 		Piadas piadas = new Piadas();
+		Missoes miss = new Missoes();
 		Interpretador interpretador = new Interpretador();
 		
 		Comunicacao.Fala("Oi! Eu sou a MIA. Como posso ajudar?");
@@ -14,6 +15,8 @@
 				case "adicionar nota": notas.AdicionarNota(); break;
 				case "buscar nota": notas.BuscaNota(); break;
 				case "aleatorizar piada": piadas.AleatorizarPiada(); break;
+				case "adicionar missào": miss.AdicionarMissao(); break;
+				case "iniciar missào": miss.IniciarMissao(); break;
 				default: Comunicacao.Fala("Nao entendi. Pode repetir?"); break;
 			}
 		}
