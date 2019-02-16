@@ -34,32 +34,13 @@
     </LinearLayout>
 
     <ImageButton
-        android:background="@android:color/transparent"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
         android:id="@+id/button"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:src="@drawable/ic_mic" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/say_something"
-        android:id="@+id/speak"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textToSpeech"
-        android:hint="@string/tts_hint"
-        android:layout_alignTop="@+id/speak"
-        android:layout_toLeftOf="@+id/speak"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true" />
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_logo_mia" />
 
 </RelativeLayout>

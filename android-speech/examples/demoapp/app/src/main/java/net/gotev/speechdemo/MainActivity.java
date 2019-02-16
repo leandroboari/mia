@@ -34,11 +34,13 @@ public class MainActivity extends AppCompatActivity implements SpeechDelegate {
     private final int PERMISSIONS_REQUEST = 1;
 
     private ImageButton button;
-    private Button speak;
     private TextView text;
-    private EditText textToSpeech;
     private SpeechProgressView progress;
     private LinearLayout linearLayout;
+
+    Piadas piadas;
+    Interpretador interpretador;
+    Missoes miss;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,21 +54,24 @@ public class MainActivity extends AppCompatActivity implements SpeechDelegate {
         button = findViewById(R.id.button);
         button.setOnClickListener(view -> onButtonClick());
 
-        speak = findViewById(R.id.speak);
-        speak.setOnClickListener(view -> onSpeakClick());
+        piadas = new Piadas();
+        interpretador = new Interpretador();
+        miss = new Missoes();
 
         text = findViewById(R.id.text);
-        textToSpeech = findViewById(R.id.textToSpeech) ;
         progress = findViewById(R.id.progress);
 
         int[] colors = {
                 ContextCompat.getColor(this, android.R.color.black),
-                ContextCompat.getColor(this, android.R.color.darker_gray),
                 ContextCompat.getColor(this, android.R.color.black),
-                ContextCompat.getColor(this, android.R.color.holo_orange_dark),
-                ContextCompat.getColor(this, android.R.color.holo_red_dark)
+                ContextCompat.getColor(this, android.R.color.black),
+                ContextCompat.getColor(this, android.R.color.black),
+                ContextCompat.getColor(this, android.R.color.black)
         };
         progress.setColors(colors);
+
+
+
     }
 
     @Override
@@ -75,7 +80,8 @@ public class MainActivity extends AppCompatActivity implements SpeechDelegate {
         Speech.getInstance().shutdown();
     }
 
-    private void onButtonClick() {
+
+    public void onButtonClick() {
         if (Speech.getInstance().isListening()) {
             Speech.getInstance().stopListening();
         } else {
@@ -102,7 +108,7 @@ public class MainActivity extends AppCompatActivity implements SpeechDelegate {
         }
     }
 
-    private void onRecordAudioPermissionGranted() {
+    void onRecordAudioPermissionGranted() {
         button.setVisibility(View.GONE);
         linearLayout.setVisibility(View.VISIBLE);
 
@@ -118,29 +124,6 @@ public class MainActivity extends AppCompatActivity implements SpeechDelegate {
         }
     }
 
-    private void onSpeakClick() {
-        if (textToSpeech.getText().toString().trim().isEmpty()) {
-            Toast.makeText(this, R.string.input_something, Toast.LENGTH_LONG).show();
-            return;
-        }
-
-        Speech.getInstance().say(textToSpeech.getText().toString().trim(), new TextToSpeechCallback() {
-            @Override
-            public void onStart() {
-                Toast.makeText(MainActivity.this, "TTS onStart", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onCompleted() {
-                Toast.makeText(MainActivity.this, "TTS onCompleted", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onError() {
-                Toast.makeText(MainActivity.this, "TTS onError", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 
     @Override
     public void onStartOfSpeech() {
@@ -163,8 +146,21 @@ public class MainActivity extends AppCompatActivity implements SpeechDelegate {
             Speech.getInstance().say(getString(R.string.repeat));
 
         } else {
-            Speech.getInstance().say(result);
+
+            switch(interpretador.Processar(result.toLowerCase())) {
+                case "aleatorizar piada": piadas.AleatorizarPiada(); break;
+                case "iniciar missao": miss.IniciarMissoes(); break;
+                case "encerrar missao": miss.EncerrarMissoes(); break;
+
+                default: Comunicacao.Fala("Nao entendi. Repita por favor."); break;
+
+
+            }
         }
+
+        // aqui
+
+
     }
 
     @Override
