@@ -1,3 +1,5 @@
+import java.util.*;
+
 class Compromisso {
 	String texto;
 	int dia;
@@ -6,7 +8,7 @@ class Compromisso {
 	int hora;
 	int minuto;
 
-	void Compromisso() {
+	public Compromisso() {
 		texto = "";
 		dia = 0;
 		mes = 0;
@@ -14,6 +16,15 @@ class Compromisso {
 		hora = 0;
 		minuto = 0;
 	}
+	public Compromisso(String t, int d, int m, int a, int h, int min) {
+		texto = t;
+		dia = d;
+		mes = m;
+		ano = a;
+		hora = h;
+		minuto = min;
+	}
+
 	void DefineDia(String palavra) {
 		dia = Integer.parseInt(palavra);
 	}
@@ -77,7 +88,31 @@ class Compromisso {
 	}
 
 	String VerCompromisso() {
-		return "Em " + VerDia() + "/" + VerMes() + "/" + VerAno() + " as " + VerHora() + ":" + VerMinuto() + " voce tera: " + VerTexto();
+		return "Em " + VerDia() + "/" + VerMes() + "/" + VerAno() + " as " + VerHora() + ":" + VerMinuto() + " voce tem: " + VerTexto();
+	}
+
+	boolean VerificaInicio() {
+		Date d = new Date();
+		Calendar calendario = Calendar.getInstance();
+		calendario.setTime(d);
+		int ano = calendario.get(Calendar.YEAR);
+		int mes = calendario.get(Calendar.MONTH);
+		int dia = calendario.get(Calendar.DAY_OF_MONTH);
+		int hora = calendario.get(Calendar.HOUR_OF_DAY);
+		int minute = calendario.get(Calendar.MINUTE);
+
+		Boolean verificacao = false;
+
+		Comunicacao.Fala("AAAAAAAAAAAAAA:" + minute);
+
+		if(String.valueOf(ano).equals(VerAno()))
+			if(String.valueOf(mes).equals(VerMes()))
+				if(String.valueOf(dia).equals(VerDia()))
+					if(String.valueOf(hora).equals(VerHora()))
+						if(String.valueOf(minute).equals(VerMinuto()))
+							verificacao = true;
+	
+		return verificacao;
 	}
 
 }

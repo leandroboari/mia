@@ -8,12 +8,15 @@ public class Interpretador {
 	private final Vector<String> editar = new Vector<String>();
 	private final Vector<String> aleatorizar = new Vector<String>();
 	private final Vector<String> iniciar = new Vector<String>();
+	private final Vector<String> encerrar = new Vector<String>();
 
 	public Interpretador() {	
 		adicionar.add("adicionar");
+		adicionar.add("adicione");
 		adicionar.add("colocar");
 		adicionar.add("inserir");
 		adicionar.add("fazer");
+		adicionar.add("agendar");
 		adicionar.add("novo");
 
 		buscar.add("buscar");
@@ -47,6 +50,11 @@ public class Interpretador {
 		iniciar.add("iniciar");
 		iniciar.add("começar");
 
+		encerrar.add("encerrar");
+		encerrar.add("finalizar");
+		encerrar.add("terminar");
+		encerrar.add("acabar");
+
 	}
 
 	private String ConverteSingular(String palavra) {
@@ -79,6 +87,8 @@ public class Interpretador {
 			if(editar.contains(palavraAtual)) verbo = "editar";
 			if(remover.contains(palavraAtual)) verbo = "remover";
 			if(aleatorizar.contains(palavraAtual)) verbo = "aleatorizar";
+			if(iniciar.contains(palavraAtual)) verbo = "iniciar";
+			if(encerrar.contains(palavraAtual)) verbo = "encerrar";
 		}
 
 		String funcao = "";
@@ -88,7 +98,7 @@ public class Interpretador {
 			if(palavraAtual.equals("compromisso")) funcao = "compromisso";
 			if(palavraAtual.equals("piada")) funcao = "piada";
 			if(palavraAtual.equals("nota")) funcao = "nota";
-			if(palavraAtual.equals("missào")) funcao = "missào";
+			if(palavraAtual.equals("missao")) funcao = "missao";
 		}
 
 		return verbo + " " + funcao;

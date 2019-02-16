@@ -5,6 +5,12 @@ import java.util.Date;
 public class Agenda {
 	private Vector<Compromisso> compromissos = new Vector<Compromisso>();
 
+	public Agenda() {
+		compromissos.add(new Compromisso("Inicio da FLL", 16, 1, 2019, 7, 0));
+		compromissos.add(new Compromisso("Encerramento da FLL", 17, 1, 2019, 18, 0));
+		compromissos.add(new Compromisso("Vai tomar no cu", 15, 1, 2019, 16, 56));
+	}
+
 	void AdicionarCompromisso() {
 		Compromisso novoCompromisso = new Compromisso();
 		Comunicacao.Fala("Qual o dia, mes e ano do seu compromisso?");
@@ -91,6 +97,14 @@ public class Agenda {
 	void LerCompromissos() {
 		for(int i = 0; i < ContaCompromissos(); i++) {
 			Comunicacao.Fala(compromissos.get(i).VerCompromisso());
+		}
+	}
+
+	void VerificaCompromissos() {
+		for (Compromisso cmp : compromissos) {
+			if(cmp.VerificaInicio()) {
+				Comunicacao.Fala(cmp.VerCompromisso());
+			}
 		}
 	}
 }

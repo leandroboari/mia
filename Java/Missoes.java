@@ -4,55 +4,43 @@ public class Missoes{
 
 	private Vector<Missao> missoes = new Vector<Missao>();
 
-
 	public Missoes() {
+		missoes.add(new Missao("core values", 16, 1, 2019, 14, 0, "5 minutos", "nao iniciada", "Tenham calma em mostrar como foi a temperorada. Vocês se esforçaram muito e sabem trabalhar em equipe! Eu sei disso.", "Juízes, em nome de toda a equipe Volts, eu agraço a atenção. Espero que vocês, humanos, tenham gostado de mim, uma Inteligência Artificial! Tenham um ótimo dia!"));
+		missoes.add(new Missao("projeto de pesquisa", 16, 1, 2019, 14, 0, "5 minutos", "nao iniciada", "Tenham calma em me apresentar, eu sou única e vocês são ótimos em apresentações!", "Juízes, em nome de toda a equipe Volts, eu agraço a atenção. Espero que vocês, humanos, tenham gostado de mim, uma Inteligência Artificial! Tenham um ótimo dia!"));
+		missoes.add(new Missao("sumário executivo do robô", 16, 1, 2019, 14, 0, "5 minutos", "nao iniciada", "Tenham calma em apresentar o nosso robô!", "Juízes, em nome de toda a equipe Volts, eu agraço a atenção. Espero que vocês, humanos, tenham gostado de mim, uma Inteligência Artificial! Tenham um ótimo dia!"));
 
 	}
 
-	public void AdicionarMissao(){
-		Comunicacao.fala("Qual o horario e dia de inicio da missao");
-		String inicio = Comunicacao.escuta();
-		Comunicacao.fala("Qual os detalhes da missao");
-		String detalhes = Comunicacao.escuta();
-		Comunicacao.fala("Qual a duracao da missao");
-		String duracao = Comunicacao.escuta();
-		Comunicacao.fala("Qual o nome da missao");
-		String nome = Comunicacao.escuta();
-		Comunicacao.fala("Qual a mensagem de início da missao?");
-		String mensagemInicio = Comunicacao.escuta();
-		Comunicacao.fala("Qual a mensagem de encerramento da missao?");
-		String mensagemEncerramento = Comunicacao.escuta();
-		missoes.add(new Missao(inicio, nome, detalhes, duracao, mensagemInicio, mensagemEncerramento));
-		Missao last = missoes.lastElement();
-		Comunicacao.fala("Missao " + last.lerCodigo() + " adicionada com sucesso.");
-	}
-
-	public void LerMissoes() {
-
-	}
-
-	public void IniciarMissao() {
-		Comunicacao.fala("Qual o código da missáo?");
-		String codigo = Comunicacao.escuta();
-		int posMissao = 0;
-		boolean encontrouMissao = false;
-		for (Missao missao : missoes) {
-			if(missao.lerCodigo().equals(codigo)) {
-				encontrouMissao = true;
+	void IniciarMissoes() {
+		Comunicacao.Fala("Qual o nome da missão?");
+		String identificacao = Comunicacao.Escuta();
+		Boolean encontrou = false;
+		for (Missao mis : missoes) {
+			if(mis.VerNome().equals(identificacao)) {
+				mis.IniciarMissao();
+				encontrou = true;
 				break;
 			}
-			posMissao++;
 		}
-		if(!encontrouMissao) {
-			Comunicacao.fala("Me desculpe. A missào nào foi encontrada!");
-		} else {
-			Missao missaoAtual = missoes.get(posMissao);
-			missaoAtual.iniciarMissao();
-			Comunicacao.fala("Missào " + codigo + " iniciada. " + missaoAtual.lerMensagemInicio());
+		if(!encontrou) {
+			Comunicacao.Fala("Desculpe! A missão não foi encontrada.");
 		}
 	}
-	public void EncerrarMissao() {
 
+	void EncerrarMissoes() {
+		Comunicacao.Fala("Qual o nome da missão?");
+		String identificacao = Comunicacao.Escuta();
+		Boolean encontrou = false;
+		for (Missao mis : missoes) {
+			if(mis.VerNome().equals(identificacao)) {
+				mis.EncerrarMissao();
+				encontrou = true;
+				break;
+			}
+		}
+		if(!encontrou) {
+			Comunicacao.Fala("Desculpe! A missão não foi encontrada.");
+		}
 	}
 
 }
