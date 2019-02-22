@@ -1,5 +1,5 @@
 public class Missao {
-	String nome;
+//	String nome;
 	int dia;
 	int mes;
 	int ano;
@@ -92,8 +92,7 @@ public class Missao {
 	}
 	String VerDia() {
 		return String.valueOf(dia);
-	}
-	String VerHora() {
+	} 
 		return String.valueOf(hora);
 	}
 	String VerMinuto() {
