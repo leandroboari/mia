@@ -1,3 +1,3 @@
-# Artificial Inteligence Into-Orbit
+# MIA - Minha Inteligência Artificial
 
-Coming soom.
+App desenvolvido para participação no campeonato de robótica First Lego League - Into Orbit.
